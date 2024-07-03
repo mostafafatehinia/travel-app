@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 
 type Product = {
@@ -6,7 +7,7 @@ type Product = {
   archived: boolean;
 };
 
-export const ProductPage = () => {
+const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [filter, setFilter] = useState("all");
@@ -16,9 +17,13 @@ export const ProductPage = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const response = await fetch("https://example.com/products");
-    const data = await response.json();
-    setProducts(data);
+    try {
+      const response = await fetch("https://example.com/products");
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const add = () => {
@@ -90,3 +95,5 @@ export const ProductPage = () => {
     </div>
   );
 };
+
+export default ProductPage;
