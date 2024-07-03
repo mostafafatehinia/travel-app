@@ -4,6 +4,63 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(16, 30, 70, 0.5);
+    border-radius: 4px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(11, 21, 49);
+    cursor: pointer;
+  }
+}
+
 html {
   @apply font-iranYekan;
+}
+
+body {
+  @apply bg-gray-50;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    z-index: -1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    z-index: 0;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    z-index: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.2s forwards;
+  display: block;
+}
+
+.animate-slide-out {
+  animation: slideOut 0.2s forwards;
+  visibility: hidden;
 }

@@ -1,11 +1,9 @@
-import { Card } from "@/components";
+import { PassengerForm } from "@/components";
 
-export default function Home() {
+export default function PassengersPage() {
   return (
     <main className="flex h-screen items-center justify-center">
-      <Card>
-        <div>سلام</div>
-      </Card>
+      <PassengerForm />
     </main>
   );
 }
