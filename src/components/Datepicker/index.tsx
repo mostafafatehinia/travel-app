@@ -33,7 +33,7 @@ export const Datepicker = ({
 
   return (
     <div
-      className={`relative flex w-full items-center rounded-xl border border-gray-200 xl:justify-between
+      className={`relative z-0 flex w-full items-center rounded-xl border border-gray-200 xl:justify-between
           ${required ? "ring-2 ring-red-400 ring-offset-2" : ""}
     `}
     >
@@ -53,7 +53,7 @@ export const Datepicker = ({
         selected={month}
         setSelected={setMonth}
         placeholder="ماه"
-        className="border-none shadow-none"
+        className="rounded-none border-y-0 shadow-none"
         optionsClassName="xl:w-[100px]"
       >
         {MONTHS.map((month, i) => (
@@ -75,7 +75,7 @@ export const Datepicker = ({
         ))}
       </Dropdown>
       {errorMessage && (
-        <p className="absolute left-0 top-[68px] text-red-400">
+        <p className="absolute left-0 top-[68px] -z-10 text-red-400">
           {errorMessage}
         </p>
       )}

@@ -67,7 +67,7 @@ export const Dropdown = ({
   });
 
   return (
-    <div ref={dropDownRef} className="relative w-full">
+    <div ref={dropDownRef} className="relative z-0 w-full">
       <button
         type="button"
         className={twMerge(
@@ -96,7 +96,7 @@ export const Dropdown = ({
         {options}
       </div>
       {errorMessage && (
-        <p className="absolute left-0 top-[68px] text-red-400">
+        <p className="absolute left-0 top-[68px] -z-10 text-red-400">
           {errorMessage}
         </p>
       )}

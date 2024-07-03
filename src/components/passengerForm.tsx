@@ -27,13 +27,14 @@ export const PassengerForm = () => {
         className="w-full space-y-8 xl:min-w-[1140px]"
         onSubmit={handleSubmit(submitForm)}
       >
-        <div className="flex items-center gap-4">
+        <div className="relative flex items-center gap-4">
           <div className="text-gray-700">
             <Users />
           </div>
           <div className="text-xl font-semibold text-gray-800">
             مشخصات مسافران
           </div>
+          <div className="absolute -bottom-2 -right-8 -top-2 w-2 rounded-bl-lg rounded-tl-lg bg-gray-700" />
         </div>
         <div className="flex items-center justify-between">
           <Badge>بزرگسال</Badge>
