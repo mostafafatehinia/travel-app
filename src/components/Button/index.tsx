@@ -7,7 +7,7 @@ export const Button = ({ startContent, children, ...props }: ButtonProps) => {
     <button
       {...props}
       className={twMerge(
-        "inline-flex w-auto gap-1 rounded-lg border-2 border-blue-500 px-3 py-2 text-lg text-blue-500 transition-all duration-150 focus:ring focus:ring-blue-300 focus:ring-offset-2",
+        "inline-flex w-auto gap-1 rounded-lg border-2 border-blue-500 px-3 py-2 text-lg text-blue-500 transition-all duration-150 focus:ring focus:ring-blue-300 focus:ring-offset-2 disabled:border-gray-500 disabled:text-gray-500",
         props.className,
       )}
     >

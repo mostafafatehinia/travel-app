@@ -21,9 +21,12 @@ export const Dropdown = ({
   children,
   className,
   optionsClassName,
+  selected,
+  required,
+  errorMessage,
+  setSelected,
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
 
   const dropDownRef = useRef<HTMLDivElement>(null);
 
@@ -66,8 +69,11 @@ export const Dropdown = ({
   return (
     <div ref={dropDownRef} className="relative w-full">
       <button
+        type="button"
         className={twMerge(
-          "inline-flex h-[60px] w-full items-center justify-between gap-3 rounded-xl border border-gray-300 px-2 text-lg font-semibold outline-none transition-all duration-200 focus:ring focus:ring-blue-500 focus:ring-offset-2",
+          `inline-flex h-[60px] w-full items-center justify-between gap-3 rounded-xl border border-gray-300 px-2 text-lg font-semibold outline-none transition-all duration-200 focus:ring focus:ring-blue-500 focus:ring-offset-2 
+          ${required ? "ring-2 ring-red-400 ring-offset-2" : ""}
+          `,
           className,
         )}
         onClick={handleToggle}
@@ -89,6 +95,11 @@ export const Dropdown = ({
       >
         {options}
       </div>
+      {errorMessage && (
+        <p className="absolute left-0 top-[68px] text-red-400">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 };
