@@ -38,8 +38,8 @@ export const Datepicker = ({
     `}
     >
       <Dropdown
-        selected={day}
-        setSelected={setDay}
+        value={day}
+        onChange={setDay}
         placeholder="روز"
         className="border-none shadow-none"
       >
@@ -50,8 +50,8 @@ export const Datepicker = ({
         ))}
       </Dropdown>
       <Dropdown
-        selected={month}
-        setSelected={setMonth}
+        value={month}
+        onChange={setMonth}
         placeholder="ماه"
         className="rounded-none border-y-0 shadow-none"
         optionsClassName="xl:w-[100px]"
@@ -63,8 +63,8 @@ export const Datepicker = ({
         ))}
       </Dropdown>
       <Dropdown
-        selected={year}
-        setSelected={setYear}
+        value={year}
+        onChange={setYear}
         placeholder="سال"
         className="border-none shadow-none"
       >

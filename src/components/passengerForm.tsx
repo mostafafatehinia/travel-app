@@ -1,6 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { Controller, FieldValues, useForm } from "react-hook-form";
 
 import { Badge, Button, Card, Datepicker, Dropdown, Input } from "@/components";
 import { Add, User, Users } from "@/Icons";
@@ -11,6 +11,7 @@ import GENDER_OPTIONS from "../constants/globals.json";
 export const PassengerForm = () => {
   const {
     watch,
+    control,
     register,
     handleSubmit,
     setValue,
@@ -26,6 +27,7 @@ export const PassengerForm = () => {
       <form
         className="w-full space-y-8 xl:min-w-[1140px]"
         onSubmit={handleSubmit(submitForm)}
+        autoComplete="off"
       >
         <div className="relative flex items-center gap-4">
           <div className="text-gray-700">
@@ -56,19 +58,25 @@ export const PassengerForm = () => {
             required={!!errors.family?.message}
             errorMessage={errors.family?.message?.toString()}
           />
-          <Dropdown
-            selected={watch("gender")}
-            setSelected={(value) => setValue("gender", value)}
-            placeholder="جنسیت"
-            required={!!errors.gender?.message}
-            errorMessage={errors.gender?.message?.toString()}
-          >
-            {GENDER_OPTIONS.map((gender, i) => (
-              <Dropdown.Option key={i} value={gender.value}>
-                {gender.label}
-              </Dropdown.Option>
-            ))}
-          </Dropdown>
+          <Controller
+            name="gender"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Dropdown
+                {...field}
+                placeholder="جنسیت"
+                required={!!errors.gender?.message}
+                errorMessage={errors.gender?.message?.toString()}
+              >
+                {GENDER_OPTIONS.map((gender, i) => (
+                  <Dropdown.Option key={i} value={gender.value}>
+                    {gender.label}
+                  </Dropdown.Option>
+                ))}
+              </Dropdown>
+            )}
+          />
           <Input
             {...register("nationalId")}
             required={!!errors.nationalId?.message}
